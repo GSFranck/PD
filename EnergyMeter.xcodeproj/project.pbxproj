@@ -11,14 +11,20 @@
 		0A1BB1DE29C85B9500F66145 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1BB1DD29C85B9500F66145 /* ContentView.swift */; };
 		0A1BB1E029C85B9800F66145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A1BB1DF29C85B9800F66145 /* Assets.xcassets */; };
 		0A1BB1E329C85B9800F66145 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A1BB1E229C85B9800F66145 /* Preview Assets.xcassets */; };
+		0AED4EA229C9BE0A00447534 /* LoggingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED4EA129C9BE0A00447534 /* LoggingView.swift */; };
+		0AED4EA629C9C7E500447534 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED4EA529C9C7E500447534 /* HomeView.swift */; };
+		0AED4EA829C9C80E00447534 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED4EA729C9C80E00447534 /* Data.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0A1BB1D829C85B9500F66145 /* EnergyMeter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnergyMeter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A1BB1DB29C85B9500F66145 /* EnergyMeterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnergyMeterApp.swift; sourceTree = "<group>"; };
-		0A1BB1DD29C85B9500F66145 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0A1BB1DD29C85B9500F66145 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		0A1BB1DF29C85B9800F66145 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A1BB1E229C85B9800F66145 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0AED4EA129C9BE0A00447534 /* LoggingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingView.swift; sourceTree = "<group>"; };
+		0AED4EA529C9C7E500447534 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		0AED4EA729C9C80E00447534 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +59,9 @@
 			children = (
 				0A1BB1DB29C85B9500F66145 /* EnergyMeterApp.swift */,
 				0A1BB1DD29C85B9500F66145 /* ContentView.swift */,
+				0AED4EA529C9C7E500447534 /* HomeView.swift */,
+				0AED4EA129C9BE0A00447534 /* LoggingView.swift */,
+				0AED4EA729C9C80E00447534 /* Data.swift */,
 				0A1BB1DF29C85B9800F66145 /* Assets.xcassets */,
 				0A1BB1E129C85B9800F66145 /* Preview Content */,
 			);
@@ -137,6 +146,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AED4EA229C9BE0A00447534 /* LoggingView.swift in Sources */,
+				0AED4EA829C9C80E00447534 /* Data.swift in Sources */,
+				0AED4EA629C9C7E500447534 /* HomeView.swift in Sources */,
 				0A1BB1DE29C85B9500F66145 /* ContentView.swift in Sources */,
 				0A1BB1DC29C85B9500F66145 /* EnergyMeterApp.swift in Sources */,
 			);
@@ -264,6 +276,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EnergyMeter/Preview Content\"";
@@ -272,6 +285,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -292,6 +306,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EnergyMeter/Preview Content\"";
@@ -300,6 +315,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -1,21 +1,18 @@
-//
-//  ContentView.swift
-//  EnergyMeter
-//
-//  Created by Gustav Franck on 20/03/2023.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        TabView {
+            HomeView()
+                .tabItem {
+                    Label("Home",systemImage: "person")
+                }
+            LoggingView()
+                .tabItem {
+                    Label("Logging", systemImage: "chart.bar.doc.horizontal")
+                }
         }
-        .padding()
+        
     }
 }
 
@@ -24,3 +21,5 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
