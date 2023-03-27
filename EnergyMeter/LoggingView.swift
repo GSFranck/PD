@@ -13,33 +13,46 @@ struct LoggingView: View {
 
             VStack {
                 VStack {
+                    /*
                     Section(header:Text("Timestamp").font(.custom("Poppins", size: 32))
                             .fontWeight(.medium)
                             .foregroundColor(.black))
-                    {
+                    {*/
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.white)
-                            .frame(height: 100)
+                            .frame(width: 350,height: 125)
                             .overlay(
-                                DatePicker("Date:", selection: $currentTime)
-                                    .labelsHidden()
-                                    .padding(.horizontal)
+                                VStack {
+                                    Text("Timestamp").font(.custom("Poppins", size: 25))
+                                        .fontWeight(.medium)
+                                        .foregroundColor(.black)
+                                    DatePicker("Date:", selection: $currentTime)
+                                        .labelsHidden()
+                                        .padding(.horizontal)
+                                }
                             )
-                    }
+                    /*}*/
                     .padding()
                 }
-                
-                Text("How is your energy level?")
-                    .font(.system(size: 32, weight: .medium, design:  .default))
-                    .foregroundColor(.black)
-                    .padding()
-
-                Slider(value: $elevel, in: 0...5)
-                    .padding()
-
-                Text("\(elevel, specifier: "%.1f")")
-                    .padding()
-
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.white)
+                    .frame(width: 350,height: 350)
+                    .overlay(
+                        VStack {
+                            Text("How is your energy level?")
+                                .font(.system(size: 32, weight: .medium, design:  .default))
+                                .foregroundColor(.black)
+                                .padding()
+                            
+                            Slider(value: $elevel, in: 0...5)
+                                .padding()
+                            
+                            Text("\(elevel, specifier: "%.1f")")
+                                .padding()
+                            
+                            
+                        }
+                        )
                 Button(action: {
                     // Add logging functionality here
                 }) {
