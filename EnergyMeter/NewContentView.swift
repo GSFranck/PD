@@ -1,6 +1,14 @@
+//
+//  NewContentView.swift
+//  EnergyMeter
+//
+//  Created by Gustav Franck on 27/03/2023.
+//
+
+import Foundation
 import SwiftUI
 
-struct ContentView: View {
+struct NewContentView: View {
     var body: some View {
         TabView {
             HomeView()
@@ -16,10 +24,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct NewContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        NewContentView()
     }
 }
-
-

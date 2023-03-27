@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 enum TimeFrame: String, CaseIterable {
@@ -47,7 +46,6 @@ struct HomeView_Previews: PreviewProvider {
         .font(.largeTitle)
         .fontWeight(.bold)
         .padding()
-
     Image(information.image)
         .resizable()
         .aspectRatio(contentMode: .fit)
