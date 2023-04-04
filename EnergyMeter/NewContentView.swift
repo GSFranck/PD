@@ -1,10 +1,3 @@
-//
-//  NewContentView.swift
-//  EnergyMeter
-//
-//  Created by Gustav Franck on 27/03/2023.
-//
-
 import Foundation
 import SwiftUI
 
@@ -19,8 +12,11 @@ struct NewContentView: View {
                 .tabItem {
                     Label("Logging", systemImage: "chart.bar.doc.horizontal")
                 }
+            MealView()
+                .tabItem {
+                    Label("Meal", systemImage: "cup.and.saucer.fill")
+                }
         }
-        
     }
 }
 

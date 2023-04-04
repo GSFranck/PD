@@ -13,11 +13,19 @@ struct LoggingView: View {
 
             VStack {
                 VStack {
-                    /*
-                    Section(header:Text("Timestamp").font(.custom("Poppins", size: 32))
-                            .fontWeight(.medium)
-                            .foregroundColor(.black))
-                    {*/
+                        RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.teal).opacity(0.7)
+                            .frame(width: 350,height: 75)
+                            .overlay(
+                                VStack {
+                                    Text("Energy logging").font(.custom("Poppins", size: 25))
+                                        .fontWeight(.medium)
+                                        .foregroundColor(.white)
+                                }
+                            )
+                }
+                
+                VStack {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.white)
                             .frame(width: 350,height: 125)
@@ -31,16 +39,16 @@ struct LoggingView: View {
                                         .padding(.horizontal)
                                 }
                             )
-                    /*}*/
                     .padding()
                 }
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white)
-                    .frame(width: 350,height: 350)
+                    .frame(width: 350,height: 200)
                     .overlay(
                         VStack {
                             Text("How is your energy level?")
-                                .font(.system(size: 32, weight: .medium, design:  .default))
+                                .font(.custom("Poppins", size: 25))
+                                .fontWeight(.medium)
                                 .foregroundColor(.black)
                                 .padding()
                             
@@ -49,12 +57,9 @@ struct LoggingView: View {
                             
                             Text("\(elevel, specifier: "%.1f")")
                                 .padding()
-                            
-                            
                         }
                         )
                 Button(action: {
-                    // Add logging functionality here
                 }) {
                     Text("Log")
                         .font(.headline)
