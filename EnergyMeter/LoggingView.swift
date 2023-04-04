@@ -1,10 +1,9 @@
 import SwiftUI
 
-
 struct LoggingView: View {
     @State private var elevel: Double = 2.5
-    @State var currentTime = Date()
-    var closedRange = Calendar.current.date(byAdding: .year, value: -1, to: Date())!
+    @State private var currentTime = Date()
+    @AppStorage("loggedEntries") var loggedEntries: Data?
 
     var body: some View {
         ZStack {
@@ -13,34 +12,35 @@ struct LoggingView: View {
 
             VStack {
                 VStack {
-                        RoundedRectangle(cornerRadius: 10)
+                    RoundedRectangle(cornerRadius: 10)
                         .fill(Color.teal).opacity(0.7)
-                            .frame(width: 350,height: 75)
-                            .overlay(
-                                VStack {
-                                    Text("Energy logging").font(.custom("Poppins", size: 25))
-                                        .fontWeight(.medium)
-                                        .foregroundColor(.white)
-                                }
-                            )
+                        .frame(width: 350,height: 75)
+                        .overlay(
+                            VStack {
+                                Text("Energy logging").font(.custom("Poppins", size: 25))
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.white)
+                            }
+                        )
                 }
-                
+
                 VStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.white)
-                            .frame(width: 350,height: 125)
-                            .overlay(
-                                VStack {
-                                    Text("Timestamp").font(.custom("Poppins", size: 25))
-                                        .fontWeight(.medium)
-                                        .foregroundColor(.black)
-                                    DatePicker("Date:", selection: $currentTime)
-                                        .labelsHidden()
-                                        .padding(.horizontal)
-                                }
-                            )
-                    .padding()
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.white)
+                        .frame(width: 350,height: 125)
+                        .overlay(
+                            VStack {
+                                Text("Timestamp").font(.custom("Poppins", size: 25))
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.black)
+                                DatePicker("Date:", selection: $currentTime)
+                                    .labelsHidden()
+                                    .padding(.horizontal)
+                            }
+                        )
+                        .padding()
                 }
+
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white)
                     .frame(width: 350,height: 200)
@@ -51,15 +51,26 @@ struct LoggingView: View {
                                 .fontWeight(.medium)
                                 .foregroundColor(.black)
                                 .padding()
-                            
+
                             Slider(value: $elevel, in: 0...5)
                                 .padding()
-                            
+
                             Text("\(elevel, specifier: "%.1f")")
                                 .padding()
                         }
-                        )
+                    )
+
                 Button(action: {
+                    // Store the timestamp and energy level in UserDefaults
+                    let entry = LoggedEntry(timestamp: currentTime, energyLevel: elevel)
+                    var entries = [LoggedEntry]()
+                    if let data = loggedEntries, let savedEntries = try? JSONDecoder().decode([LoggedEntry].self, from: data) {
+                        entries = savedEntries
+                    }
+                    entries.append(entry)
+                    if let data = try? JSONEncoder().encode(entries) {
+                        loggedEntries = data
+                    }
                 }) {
                     Text("Log")
                         .font(.headline)
@@ -70,13 +81,17 @@ struct LoggingView: View {
                         .cornerRadius(10)
                         .padding()
                 }
-                
+
                 Spacer()
             }
         }
     }
 }
 
+struct LoggedEntry: Codable {
+    let timestamp: Date
+    let energyLevel: Double
+}
 
 struct LoggingView_Previews: PreviewProvider {
     static var previews: some View {
