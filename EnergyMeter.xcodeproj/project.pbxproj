@@ -11,7 +11,6 @@
 		0A1BB1E029C85B9800F66145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A1BB1DF29C85B9800F66145 /* Assets.xcassets */; };
 		0A1BB1E329C85B9800F66145 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A1BB1E229C85B9800F66145 /* Preview Assets.xcassets */; };
 		0AA619CC29D4388900406F5D /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA619CB29D4388900406F5D /* MealView.swift */; };
-		0AC811B929DC6DD3009F9B8C /* showdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC811B829DC6DD3009F9B8C /* showdata.swift */; };
 		0AC811BC29DC7820009F9B8C /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 0AC811BB29DC7820009F9B8C /* SwiftUICharts */; };
 		0AC811BF29DCA504009F9B8C /* AAInfographics in Frameworks */ = {isa = PBXBuildFile; productRef = 0AC811BE29DCA504009F9B8C /* AAInfographics */; };
 		0AC8405629D202C300997D79 /* NewContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8405529D202C300997D79 /* NewContentView.swift */; };
@@ -26,7 +25,6 @@
 		0A1BB1DF29C85B9800F66145 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A1BB1E229C85B9800F66145 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0AA619CB29D4388900406F5D /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
-		0AC811B829DC6DD3009F9B8C /* showdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showdata.swift; sourceTree = "<group>"; };
 		0AC8405529D202C300997D79 /* NewContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContentView.swift; sourceTree = "<group>"; };
 		0AED4EA129C9BE0A00447534 /* LoggingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingView.swift; sourceTree = "<group>"; };
 		0AED4EA529C9C7E500447534 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -66,7 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				0A1BB1DB29C85B9500F66145 /* EnergyMeterApp.swift */,
-				0AC811B829DC6DD3009F9B8C /* showdata.swift */,
 				0AC8405529D202C300997D79 /* NewContentView.swift */,
 				0AED4EA529C9C7E500447534 /* HomeView.swift */,
 				0AED4EA129C9BE0A00447534 /* LoggingView.swift */,
@@ -165,7 +162,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AED4EA229C9BE0A00447534 /* LoggingView.swift in Sources */,
-				0AC811B929DC6DD3009F9B8C /* showdata.swift in Sources */,
 				0AC8405629D202C300997D79 /* NewContentView.swift in Sources */,
 				0AED4EA829C9C80E00447534 /* Data.swift in Sources */,
 				0AED4EA629C9C7E500447534 /* HomeView.swift in Sources */,

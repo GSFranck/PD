@@ -1,5 +1,4 @@
 import SwiftUI
-import SwiftUICharts
 import AAInfographics
 
 enum TimeFrame: String, CaseIterable {
@@ -11,42 +10,60 @@ struct EnergyData: Codable {
     let value: Double
 }
 
-struct GradientBackgroundModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        ZStack {
-            LinearGradient(gradient: Gradient(colors: [.blue, .white]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                .edgesIgnoringSafeArea(.all)
-            content
-        }
-    }
-}
-
-extension View {
-    func withGradientBackground() -> some View {
-        self.modifier(GradientBackgroundModifier())
-    }
-}
-
 struct HomeView: View {
     @State var selection: TimeFrame = .Week
     @State private var elevel: Double = 2.5
     @State private var energyLevels: [EnergyData] = []
 
+    private var filteredEnergyLevels: [EnergyData] {
+        let currentDate = Date()
+        let filtered: [EnergyData]
+
+        switch selection {
+        case .Week:
+            filtered = energyLevels.filter { energyData in
+                let interval = currentDate.timeIntervalSince(energyData.date)
+                return interval <= (7 * 24 * 60 * 60)
+            }
+        case .Month:
+            filtered = energyLevels.filter { energyData in
+                let interval = currentDate.timeIntervalSince(energyData.date)
+                return interval <= (31 * 24 * 60 * 60)
+            }
+        case .Year:
+            filtered = energyLevels.filter { energyData in
+                let interval = currentDate.timeIntervalSince(energyData.date)
+                return interval <= (365 * 24 * 60 * 60)
+            }
+        }
+        return filtered
+    }
+
     var body: some View {
         VStack {
+            
             ScrollView {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white)
                     .frame(width: 370, height: 500)
                     .overlay(
                         VStack {
-                            Text("Average Energy Level").font(.system(size: 35))
-                                .font(.system(size: 50))
-                            if !energyLevels.isEmpty {
-                                TimestampLineChartView(data: energyLevels.map { ($0.date.timeIntervalSince1970, $0.value) })
+                            
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.teal).opacity(0.7)
+                                .frame(width: 350,height: 75)
+                                .overlay(
+                                    VStack {
+                                        Text("Overview").font(.custom("Poppins", size: 25))
+                                            .fontWeight(.medium)
+                                            .foregroundColor(.white)
+                                    }
+                                )
+                        
+                            if !filteredEnergyLevels.isEmpty {
+                                TimestampLineChartView(data: filteredEnergyLevels.map { ($0.date.timeIntervalSince1970, $0.value) })
                                     .frame(height: 300)
                                     .padding()
-                                    //.withGradientBackground()
                                     .cornerRadius(10)
                             } else {
                                 Text("No data available")
@@ -61,7 +78,7 @@ struct HomeView: View {
                             }
                             .pickerStyle(.segmented)
                             .padding(.horizontal)
-                            .padding(.vertical)
+                            //.padding(.vertical)
                         })
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white)
@@ -90,7 +107,6 @@ struct HomeView: View {
                     )
 
             }
-            .withGradientBackground()
         }
         .onAppear {
             if let data = UserDefaults.standard.data(forKey: "energyLevels"),
@@ -100,7 +116,6 @@ struct HomeView: View {
         }
     }
 }
-
 struct TimestampLineChartView: UIViewRepresentable {
     typealias UIViewType = AAChartView
 
@@ -121,14 +136,14 @@ struct TimestampLineChartView: UIViewRepresentable {
             .name("Energy Level")
             .data(data.map { [$0.0, $0.1] })
             .color("#00BFFF")
-            .lineWidth(2)
+            .lineWidth(3)
 
         return AAChartModel()
             .chartType(.line)
             .animationType(.easeOutQuart)
-            .title("Energy Level")
-            .subtitle("Timestamp")
-            .yAxisTitle("Energy Level")
+            //.title("Energy Level")
+            //.subtitle("Timestamp")
+            //.yAxisTitle("Energy Level")
             .categories(data.map { _ in "" }) // Hide x-axis categories
             .series([series])
             .xAxisLabelsEnabled(false) // Hide x-axis labels
