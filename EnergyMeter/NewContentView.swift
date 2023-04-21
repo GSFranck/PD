@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 
+
 struct NewContentView: View {
     var body: some View {
         TabView {
@@ -19,6 +20,7 @@ struct NewContentView: View {
         }
     }
 }
+
 
 struct NewContentView_Previews: PreviewProvider {
     static var previews: some View {

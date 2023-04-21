@@ -1,10 +1,19 @@
 import SwiftUI
 
+struct MealData: Codable {
+    let timestamp: Date
+    let mealType: String
+    let healthiness: Double
+    let mealSize: Double
+}
+
 struct MealView: View {
     @State private var selectedMeal: String = "Breakfast"
     @State var currentTime = Date()
     @State private var healthValue: Double = 3
     @State private var mealsize: Double = 3
+    
+    @AppStorage("mealEntries") var mealEntries: Data?
     
     var body: some View {
         ZStack {
@@ -97,16 +106,25 @@ struct MealView: View {
                             }
                         )
                     Button(action: {
-                    }) {
-                        Text("Log")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.green)
-                            .cornerRadius(10)
-                            .padding()
-                    }
+                                let mealData = MealData(timestamp: currentTime, mealType: selectedMeal, healthiness: healthValue, mealSize: mealsize)
+                                var meals = [MealData]()
+                                if let data = mealEntries, let savedMeals = try? JSONDecoder().decode([MealData].self, from: data) {
+                                    meals = savedMeals
+                                }
+                                meals.append(mealData)
+                                if let data = try? JSONEncoder().encode(meals) {
+                                    mealEntries = data
+                                }
+                            }) {
+                                Text("Log")
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .background(Color.green)
+                                    .cornerRadius(10)
+                                    .padding()
+                            }
                     
                     Spacer()
                 }

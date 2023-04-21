@@ -1,9 +1,13 @@
 import SwiftUI
 
+struct EnergyData: Codable {
+    var date: Date
+    var value: Double
+}
 struct LoggingView: View {
     @State private var elevel: Double = 2.5
     @State private var currentTime = Date()
-    @AppStorage("loggedEntries") var loggedEntries: Data?
+    @AppStorage("energyLevels") var energyLevels: Data?
 
     var body: some View {
         ZStack {
@@ -62,14 +66,14 @@ struct LoggingView: View {
 
                 Button(action: {
                     // Store the timestamp and energy level in UserDefaults
-                    let entry = LoggedEntry(timestamp: currentTime, energyLevel: elevel)
-                    var entries = [LoggedEntry]()
-                    if let data = loggedEntries, let savedEntries = try? JSONDecoder().decode([LoggedEntry].self, from: data) {
+                    let energyData = EnergyData(date: currentTime, value: elevel)
+                    var entries = [EnergyData]()
+                    if let data = energyLevels, let savedEntries = try? PropertyListDecoder().decode([EnergyData].self, from: data) {
                         entries = savedEntries
                     }
-                    entries.append(entry)
-                    if let data = try? JSONEncoder().encode(entries) {
-                        loggedEntries = data
+                    entries.append(energyData)
+                    if let data = try? PropertyListEncoder().encode(entries) {
+                        energyLevels = data
                     }
                 }) {
                     Text("Log")
